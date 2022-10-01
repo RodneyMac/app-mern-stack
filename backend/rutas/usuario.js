@@ -16,7 +16,7 @@ module.exports = router;
 router.post("/agregarUsuario", (req, res) => {
   const nuevoUsuario = new ModeloUsuario({
     nombre: req.body.nombre,
-    emial: req.body.email,
+    email: req.body.email,
     idUsuario: req.body.idUsuario
   });
 
@@ -29,7 +29,7 @@ router.post("/agregarUsuario", (req, res) => {
   });
 });
 
-router.get("obtenerUsuarios", (req, res) => {
+router.get("/obtenerUsuarios", (req, res) => {
   ModeloUsuario.find({}, function(docs, err) {
     if(!err) {
       res.send(docs);
@@ -39,7 +39,7 @@ router.get("obtenerUsuarios", (req, res) => {
   });
 });
 
-router.get("/obtenerDatoUsuario", (req, res) => {
+router.post("/obtenerDatoUsuario", (req, res) => {
   ModeloUsuario.find({idUsuario: req.body.idUsuario}, function(docs, err) {
     if(!err) {
       res.send(docs);
